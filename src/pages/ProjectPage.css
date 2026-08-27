@@ -1,0 +1,248 @@
+/* ============================================================
+   PROJECT PAGE STYLES
+   ============================================================ */
+
+.project-page {
+  min-height: 100vh;
+  padding-top: calc(var(--nav-height) + var(--space-8));
+  padding-bottom: var(--space-24);
+}
+
+/* ── Not found ── */
+.project-page__notfound {
+  padding-top: var(--space-20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.project-page__err-label { color: var(--color-error); }
+
+.project-page__err-title {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+  font-family: var(--font-mono);
+  color: var(--color-text-primary);
+}
+
+.project-page__back-link {
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  text-decoration: none;
+  margin-top: var(--space-4);
+  display: inline-block;
+}
+
+/* ── Back button ── */
+.project-page__back {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  transition: border-color var(--dur-fast), color var(--dur-fast);
+  margin-bottom: var(--space-8);
+  font-family: var(--font-sans);
+}
+
+.project-page__back:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ── Header ── */
+.project-page__header {
+  padding-bottom: var(--space-10);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  animation: slideUp var(--dur-slow) var(--ease-out) both;
+}
+
+.project-page__header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.project-page__meta-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.project-page__domain { }
+
+.project-page__year {
+  color: var(--color-text-muted);
+}
+
+.project-page__status {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+}
+
+.project-page__status--complete   { color: var(--color-success); background: var(--color-success-bg); }
+.project-page__status--active     { color: var(--color-accent);  background: var(--color-accent-light); }
+.project-page__status--research   { color: var(--color-warning); background: var(--color-warning-bg); }
+.project-page__status--in-progress { color: var(--color-sql-keyword); background: #F5F3FF; }
+
+.project-page__title {
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-4xl));
+  font-weight: var(--weight-black);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+}
+
+.project-page__tagline {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-2);
+}
+
+/* ── External links ── */
+.project-page__links {
+  display: flex;
+  gap: var(--space-3);
+  flex-shrink: 0;
+  align-items: flex-start;
+}
+
+.project-page__link-btn {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-secondary);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: border-color var(--dur-fast), color var(--dur-fast), background var(--dur-fast);
+}
+
+.project-page__link-btn:hover {
+  border-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+}
+
+.project-page__link-btn--primary {
+  background: var(--color-text-primary);
+  color: #fff;
+  border-color: var(--color-text-primary);
+}
+
+.project-page__link-btn--primary:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+/* ── Description ── */
+.project-page__description {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 700px;
+}
+
+/* ── Tech stack ── */
+.project-page__tech-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.project-page__tech-label { color: var(--color-text-muted); flex-shrink: 0; }
+
+.project-page__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.project-page__tag {
+  font-size: var(--text-xs);
+  padding: 3px 10px;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+}
+
+/* ── Architecture section ── */
+.project-page__arch-section {
+  padding-top: var(--space-12);
+  animation: slideUp var(--dur-slow) var(--ease-out) 100ms both;
+}
+
+.project-page__arch-heading {
+  margin-bottom: var(--space-6);
+}
+
+.project-page__section-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-2);
+}
+
+.project-page__section-sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* ── Footer ── */
+.project-page__footer {
+  margin-top: var(--space-20);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.project-page__home-link {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: opacity var(--dur-fast);
+}
+
+.project-page__home-link:hover { opacity: 0.75; }
+
+.project-page__footer-github {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--dur-fast);
+}
+
+.project-page__footer-github:hover { color: var(--color-text-primary); }
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .project-page__header-inner {
+    flex-direction: column;
+  }
+
+  .project-page__title {
+    font-size: var(--text-2xl);
+  }
+}

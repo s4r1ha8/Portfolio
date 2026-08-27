@@ -1,0 +1,265 @@
+/* ============================================================
+   QUERY BAR STYLES
+   ============================================================ */
+
+.qb {
+  position: relative;
+  width: 100%;
+}
+
+.qb__bar {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4) var(--space-5);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+  transition: border-color var(--dur-normal) var(--ease-out),
+              box-shadow var(--dur-normal) var(--ease-out),
+              background var(--dur-normal) var(--ease-out);
+  position: relative;
+}
+
+.qb__bar:focus-within,
+.qb--executing .qb__bar {
+  border-color: var(--color-accent);
+  background: var(--color-surface-2);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
+}
+
+/* ── Prompt symbol ── */
+.qb__prompt {
+  font-size: var(--text-lg);
+  color: var(--color-accent);
+  flex-shrink: 0;
+  line-height: 1.6;
+  user-select: none;
+  font-weight: var(--weight-semibold);
+}
+
+/* ── Input wrapper (contains both highlight overlay and real textarea) ── */
+.qb__input-wrapper {
+  flex: 1;
+  position: relative;
+  min-height: 28px;
+}
+
+/* ── Input & Highlight overlay ── */
+.qb__highlight,
+.qb__input {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  padding: 0;
+  border: none;
+  resize: none;
+  overflow: hidden;
+  width: 100%;
+  min-height: 28px;
+  box-sizing: border-box;
+}
+
+/* Overlay sits exactly on top of the textarea */
+.qb__highlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--color-text-primary); /* default text colour; spans override per-token */
+  z-index: 0;
+  margin: 0;
+}
+
+.qb__input {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--color-accent);
+  outline: none;
+  display: block;
+}
+
+/*
+  While the user is actively typing, hide the overlay and show the
+  real textarea text. This eliminates the caret/text misalignment that
+  happens because browsers render <textarea> and <div> differently.
+  Syntax highlighting is still visible when the field is blurred.
+*/
+.qb__input-wrapper:focus-within .qb__highlight {
+  visibility: hidden;
+}
+
+.qb__input-wrapper:focus-within .qb__input {
+  color: var(--color-text-primary);
+}
+
+/* Disabled during typing animation */
+.qb--typing .qb__input {
+  caret-color: transparent;
+}
+
+/* ── SQL Syntax highlighting ── */
+.qb__kw   { color: var(--color-sql-keyword); font-weight: var(--weight-semibold); }
+.qb__table { color: var(--color-accent); }
+.qb__str   { color: var(--color-sql-string); }
+.qb__op    { color: var(--color-sql-operator); }
+
+/* ── Fake blinking cursor for typing animation ── */
+.qb__fake-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--color-accent);
+  vertical-align: text-bottom;
+  animation: cursorBlink 0.9s step-end infinite;
+  margin-left: 1px;
+}
+
+/* ── Run button ── */
+.qb__run {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: background var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out),
+              opacity var(--dur-fast);
+  margin-top: -2px;
+}
+
+.qb__run:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+  transform: scale(1.05);
+}
+
+.qb__run:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none;
+}
+
+.qb__run-icon {
+  font-size: 10px;
+  display: block;
+}
+
+/* ── Spinner ── */
+.qb__spinner {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* ── Progress bar ── */
+.qb__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-sql-keyword));
+  border-radius: var(--radius-full);
+  animation: queryProgress 600ms var(--ease-out) forwards;
+}
+
+@keyframes queryProgress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* ── Hint text ── */
+.qb__hint {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 11px;
+}
+
+.qb__hint kbd {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 1px 4px;
+  border: 1px solid var(--color-border-2);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  color: var(--color-text-secondary);
+}
+
+/* ── Autocomplete suggestions ── */
+.qb__suggestions,
+.qb__history {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: none;
+  z-index: 200;
+  overflow: hidden;
+  animation: slideDown var(--dur-fast) var(--ease-out);
+  list-style: none;
+}
+
+.qb__suggestion {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background var(--dur-fast), color var(--dur-fast);
+}
+
+.qb__suggestion:hover,
+.qb__suggestion.is-active {
+  background: var(--color-accent-light);
+  color: var(--color-accent-hover);
+}
+
+.qb__history {
+  padding: var(--space-3);
+}
+
+.qb__history-label {
+  padding: var(--space-2) var(--space-1);
+  margin-bottom: var(--space-1);
+}
+
+.qb__history ul { list-style: none; }
+
+.qb__history-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--dur-fast), color var(--dur-fast);
+}
+
+.qb__history-item:hover {
+  background: var(--color-surface-2);
+  color: var(--color-text-primary);
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .qb__hint { display: none; }
+  .qb__bar { padding: var(--space-3) var(--space-4); }
+}

@@ -1,0 +1,363 @@
+/* ============================================================
+   HOME PAGE STYLES
+   ============================================================ */
+
+.home {
+  min-height: 100vh;
+  padding-top: var(--nav-height);
+}
+
+/* ── Hero ── */
+.home__hero {
+  padding: var(--space-12) 0 var(--space-16);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle grid background */
+.home__hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Fade out grid at bottom */
+.home__hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--color-bg));
+  pointer-events: none;
+}
+
+/* Two-column hero layout */
+.home__hero-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+/* LEFT column */
+.home__hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* ── Name ── */
+.home__name {
+  font-size: clamp(var(--text-4xl), 8vw, var(--text-5xl));
+  font-weight: var(--weight-black);
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.0;
+  color: var(--color-text-primary);
+  animation: slideUp var(--dur-slow) var(--ease-out) 60ms both;
+}
+
+/* ── Title ── */
+.home__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  color: var(--color-text-muted);
+  animation: slideUp var(--dur-slow) var(--ease-out) 120ms both;
+}
+
+.home__title-sep {
+  color: var(--color-border-2);
+}
+
+/* ── Tagline ── */
+.home__tagline {
+  font-size: clamp(var(--text-xl), 3.5vw, var(--text-2xl));
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--leading-snug);
+  animation: slideUp var(--dur-slow) var(--ease-out) 180ms both;
+}
+
+.home__tagline em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-sql-keyword) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Sub-tagline ── */
+.home__sub {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  animation: slideUp var(--dur-slow) var(--ease-out) 240ms both;
+}
+
+/* ── RIGHT column — shortcuts card ── */
+.home__hero-right {
+  animation: slideUp var(--dur-slow) var(--ease-out) 200ms both;
+}
+
+.home__shortcuts-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.home__shortcuts-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.home__shortcuts-title {
+  color: var(--color-text-secondary);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: var(--weight-bold);
+}
+
+.home__shortcuts-tag {
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 2px 8px;
+  font-family: var(--font-mono);
+  box-shadow: var(--shadow-sm);
+}
+
+.home__shortcuts-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  /* Divider lines between rows (Stitch pattern) */
+  divide-y: var(--color-border);
+}
+
+.home__shortcut-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-5);
+  cursor: pointer;
+  transition: background var(--dur-fast);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+}
+
+.home__shortcut-row:last-child {
+  border-bottom: none;
+}
+
+.home__shortcut-row:hover {
+  background: var(--color-surface-2);
+}
+
+.home__shortcut-label {
+  font-size: var(--text-sm);
+  color: var(--color-sql-string);
+  /* green — matches SQL string highlighting */
+  font-style: normal;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+}
+
+.home__shortcut-value {
+  font-size: 11px;
+  color: var(--color-accent);
+  /* blue — matches SQL keyword/accent */
+  font-style: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-mono);
+  opacity: 0.8;
+  transition: opacity var(--dur-fast);
+}
+
+.home__shortcut-row:hover .home__shortcut-value {
+  opacity: 1;
+}
+
+.home__shortcuts-hint {
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-surface-2);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: var(--weight-semibold);
+}
+
+/* ── Query Section ── */
+.home__query-section {
+  padding: 0 0 var(--space-24);
+}
+
+.home__query-wrapper {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  animation: slideUp var(--dur-slow) var(--ease-out) 300ms both;
+}
+
+/* ── Quick actions ── */
+.home__quick-label {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.home__quick-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.home__quick-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+  font-family: var(--font-mono);
+  box-shadow: var(--shadow-sm);
+}
+
+.home__quick-btn:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-light);
+  transform: translateY(-1px);
+}
+
+.home__quick-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.home__quick-icon {
+  font-size: var(--text-sm);
+  opacity: 0.6;
+}
+
+/* ── Schema section ── */
+.home__schema {
+  padding: var(--space-16) 0;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+}
+
+.home__schema-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.home__schema-label {
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.home__schema-tables {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.home__schema-table {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: border-color var(--dur-fast), color var(--dur-fast),
+    background var(--dur-fast), box-shadow var(--dur-fast);
+  font-family: var(--font-mono);
+  box-shadow: var(--shadow-sm);
+}
+
+.home__schema-table:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-light);
+  box-shadow: var(--shadow-md);
+}
+
+.home__schema-table-icon {
+  opacity: 0.4;
+}
+
+/* ── Mobile ── */
+@media (max-width: 900px) {
+  .home__hero-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .home__hero {
+    padding: var(--space-10) 0 var(--space-12);
+  }
+
+  .home__shortcuts-card {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home__quick-buttons {
+    gap: var(--space-2);
+  }
+
+  .home__schema-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .home__shortcut-value {
+    display: none;
+    /* too narrow — hide SQL side on very small screens */
+  }
+
+  .home__shortcut-row {
+    grid-template-columns: 1fr auto;
+  }
+}
