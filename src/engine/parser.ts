@@ -199,20 +199,21 @@ const NL_MAP: Record<string, string> = {
   'skills':                 'SELECT * FROM skills;',
   'select * from portfolio': 'SELECT * FROM about;',
   // domain shortcuts
-  'vlsi projects':          "SELECT * FROM projects WHERE domain = 'VLSI';",
-  'vlsi':                   "SELECT * FROM projects WHERE domain = 'VLSI';",
+  'vlsi projects':          "SELECT * FROM projects WHERE domain LIKE 'VLSI';",
+  'vlsi':                   "SELECT * FROM projects WHERE domain LIKE 'VLSI';",
   'database projects':      "SELECT * FROM projects WHERE domain = 'Databases';",
   'databases':              "SELECT * FROM projects WHERE domain = 'Databases';",
-  'embedded projects':      "SELECT * FROM projects WHERE domain = 'TinyML / Embedded Systems';",
-  'tinyml projects':        "SELECT * FROM projects WHERE domain = 'TinyML / Embedded Systems';",
-  'ml projects':            "SELECT * FROM projects WHERE domain = 'TinyML / Embedded Systems';",
+  'embedded projects':      "SELECT * FROM projects WHERE domain LIKE 'TinyML';",
+  'tinyml projects':        "SELECT * FROM projects WHERE domain LIKE 'TinyML';",
+  'tinyml project':         "SELECT * FROM projects WHERE domain LIKE 'TinyML';",
+  'ml projects':            "SELECT * FROM projects WHERE domain LIKE 'TinyML';",
   // language/tech shortcuts
   'c++ projects':           "SELECT * FROM projects WHERE technologies = 'C++17';",
   'python projects':        "SELECT * FROM projects WHERE technologies = 'Python';",
   'featured projects':      "SELECT * FROM projects WHERE featured = 'true';",
   // skills shortcuts
   'languages':              "SELECT * FROM skills WHERE category = 'Languages';",
-  'hardware skills':        "SELECT * FROM skills WHERE category = 'Hardware';",
+  'embedded and iot':       "SELECT * FROM skills WHERE category = 'Embedded & IoT';",
   'tools':                  "SELECT * FROM skills WHERE category = 'Tools';",
   // sort shortcuts
   'latest projects':        'SELECT * FROM projects ORDER BY year DESC;',

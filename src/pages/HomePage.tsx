@@ -16,11 +16,11 @@ const QUICK_ACTIONS = [
 
 // Shorthand reference shown in the right panel
 const SHORTCUTS = [
-  { label: 'vlsi',              arrow: "WHERE domain = 'VLSI'" },
+  { label: 'vlsi',              arrow: "WHERE domain LIKE 'VLSI'" },
   { label: 'databases',         arrow: "WHERE domain = 'Databases'" },
-  { label: 'hardware skills',   arrow: "WHERE category = 'Hardware'" },
+  { label: 'embedded and iot',  arrow: "WHERE category = 'Embedded & IoT'" },
   { label: 'languages',         arrow: "WHERE category = 'Languages'" },
-  { label: 'tinyml projects',   arrow: "WHERE domain = 'TinyML'" },
+  { label: 'tinyml projects',   arrow: "WHERE domain LIKE 'TinyML'" },
   { label: 'c++ projects',      arrow: "WHERE technologies = 'C++17'" },
 ];
 

@@ -32,16 +32,16 @@ export const skills: Skill[] = [
   { name: 'Docker', category: 'Cloud & DevOps' },
   { name: 'Go (Golang)', category: 'Cloud & DevOps' },
 
-  // Embedded & TinyML
-  { name: 'Embedded Systems', category: 'Embedded & TinyML', relatedProjects: ['driftfusion-tinyml'] },
-  { name: 'TinyML', category: 'Embedded & TinyML', relatedProjects: ['driftfusion-tinyml'] },
-  { name: 'Embedded ML', category: 'Embedded & TinyML' },
-  { name: 'ESP32 (Family)', category: 'Embedded & TinyML', relatedProjects: ['driftfusion-tinyml'] },
-  { name: 'Arduino (Family)', category: 'Embedded & TinyML' },
-  { name: 'Raspberry Pi', category: 'Embedded & TinyML' },
-  { name: 'I2C', category: 'Embedded & TinyML' },
-  { name: 'SPI', category: 'Embedded & TinyML' },
-  { name: 'UART', category: 'Embedded & TinyML' },
+  // Embedded & IoT
+  { name: 'Embedded Systems', category: 'Embedded & IoT', relatedProjects: ['driftfusion-tinyml'] },
+  { name: 'TinyML', category: 'Embedded & IoT', relatedProjects: ['driftfusion-tinyml'] },
+  { name: 'Embedded ML', category: 'Embedded & IoT' },
+  { name: 'ESP32 (Family)', category: 'Embedded & IoT', relatedProjects: ['driftfusion-tinyml'] },
+  { name: 'Arduino (Family)', category: 'Embedded & IoT' },
+  { name: 'Raspberry Pi', category: 'Embedded & IoT' },
+  { name: 'I2C', category: 'Embedded & IoT' },
+  { name: 'SPI', category: 'Embedded & IoT' },
+  { name: 'UART', category: 'Embedded & IoT' },
 
   // Tools
   { name: 'Git', category: 'Tools' },
@@ -64,7 +64,7 @@ export const skillCategories = [
   'Languages',
   'Database & Development',
   'Cloud & DevOps',
-  'Embedded & TinyML',
+  'Embedded & IoT',
   'Tools',
   'Areas of Interest'
 ];

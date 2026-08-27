@@ -1,6 +1,5 @@
 // ============================================================
-// ABOUT DATA — Placeholder content
-// Replace with actual personal information before publishing
+// ABOUT DATA
 // ============================================================
 
 import type { AboutData } from './types';

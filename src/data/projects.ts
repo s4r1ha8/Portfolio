@@ -1,6 +1,5 @@
 // ============================================================
-// PROJECTS DATA — Placeholder content
-// Replace with actual project information before publishing
+// PROJECTS DATA
 // ============================================================
 
 import type { Project } from './types';

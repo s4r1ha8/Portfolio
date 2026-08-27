@@ -1,6 +1,5 @@
 // ============================================================
-// CONTACT DATA — Placeholder content
-// Replace URLs and values before publishing
+// CONTACT DATA
 // ============================================================
 
 import type { ContactRecord } from './types';
